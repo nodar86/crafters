@@ -23,4 +23,7 @@ class StaticPagesController < ApplicationController
 
   def dynmap
   end
+
+  def dynmap_inside
+  end
 end

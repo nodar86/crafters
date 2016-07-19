@@ -41,6 +41,10 @@
     font-weight: 700;
  }
 
+#navbar-title {
+    color: #1f9f20;
+}
+
 .carousel-overlay {
     position: absolute;
     top: 120px;
@@ -59,3 +63,30 @@
 	text-align: right;
 	font-size: 18px;
 }
+
+ .panel-heading {
+    background-color: #1f9f20 !important;
+    border-color: #1f9f20 !important;
+ }
+
+ .panel-primary{
+    border-color: #1f9f20 !important;
+ }
+
+ .label-primary{
+    background-color: #1f9f20 !important;
+ }
+
+ .green-link {
+    color: #1f9f20 !important;
+ }
+
+ .mobile-cover {
+    width:100%;
+    height: 100px;
+    background-image:url('mobile_cover.png');
+    background-size:cover;
+    color: #1f9f20;
+    text-shadow: black 0.3em 0.3em 0.3em;
+ }
+
