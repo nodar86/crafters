@@ -1,2 +1,182 @@
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<div class="container">
+  <div class="row">
+	<h1>Segítség</h1>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+		<h3 class="panel-title">Parancsok</h3>
+	  </div>
+	  <table class="table table-responsive table-hover">
+		<thead>
+		  <th>Parancs</th>
+		  <th>Magyarázat</th>
+		  <th>Minimum szükséges rang</th>
+		</thead>
+		<tbody>
+		  <tr>  
+			<td>/msg &lt;név&gt; &lt;üzenet&gt;</td>
+			<td>Privát üzenet küldése</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/r</td>
+			<td>Válasz a legutóbbi privát üzenetre</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/sethome</td>
+			<td>Otthon beállítása</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/home</td>
+			<td>Teleportálás a beállított otthonodra</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/delhome</td>
+			<td>A beállított otthon törlése</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/mcstats</td>
+			<td>Az összes mcMMO-s képességed szintjének kiírása</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/mining v. /woodcutting v. /excavation v. /herbalism</td>
+			<td>Adott mcMMO skill információinak kiírása, szint megnézése</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/mcscoreboard &lt;keep | clear&gt;</td>
+			<td>Az előző két parancs által felhozott kijelző megtartása vagy elrejtése</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/warp &lt;warpnév&gt;</td>
+			<td>Teleportálás a megadott warpra</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/mail &lt;név&gt; &lt;üzenet&gt;</td>
+			<td>E-mail szerű üzenet küldése</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/mail</td>
+			<td>A /maillel küldött üzenetek elolvasása</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/helpop &lt;üzenet&gt;</td>
+			<td>Segítségkérés moderátoroktól vagy adminoktól</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/motd</td>
+			<td>Message of the Day kiírása</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/suicide</td>
+			<td>Öngyilkosság</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/tpaccept vagy /tpdeny</td>
+			<td>Teleportálási kérelem elfogadása vagy elutasítása</td>
+			<td><span class="label label-default">Tag</span></td>
+		  </tr>
+		  <tr>  
+			<td>/tpa &lt;név&gt;</td>
+			<td>Teleportálás valakire</td>
+			<td><span class="label label-success">Építész</span></td>
+		  </tr>
+		  <tr>  
+			<td>/fly</td>
+			<td>Repülés</td>
+			<td><span class="label label-warning">VIP</span></td>
+		  </tr>
+		  <tr>  
+			<td>/heal</td>
+			<td>Gyógyítás</td>
+			<td><span class="label label-warning">VIP</span></td>
+		  </tr>
+		  <tr>  
+			<td>/feed</td>
+			<td>Etetés</td>
+			<td><span class="label label-warning">VIP</span></td>
+		  </tr>
+		  <tr>
+			<td>mcMMO bónuszok</td>
+			<td>Kétszer olyan gyorsan használhatóak újra a képességek, gyorsabb szintlépés!</td>
+			<td><span class="label label-warning">VIP</span></td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+	
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+		<h3 class="panel-title">mcMMO</h3>
+	  </div>
+	  <div class="panel-body">
+		<span class="lead">A szerveren működik az <a class="green-link" href="https://github.com/mcMMO-Dev/mcMMO/wiki">mcMMO</a> plugin. Az engedélyezett képességek: mining, woodcutting, excavation, herbalism</span>
+	  </div>
+		<table class="table table-responsive table-hover">
+		  <thead>
+			<th>Képesség neve</th>
+			<th>Fejlődés módja</th>
+			<th>Passzív képesség</th>
+			<th>Aktív képesség</th>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>Mining (bányászás)</td> 
+			  <td>Csákány használatával</td>
+			  <td>Egyre nagyobb esély dupla mennyiségű kincsre</td>
+			  <td>Nagyon gyors bányászás.</td>
+			</tr>
+			<tr>
+			  <td>Woodcutting (favágás)</td>
+			  <td>Fejsze használatával</td>
+			  <td>Egyre nagyobb esély dupla mennyiségű farönkre</td>
+			  <td>Aktív képesség: teljes fa levágása egy ütéssel</td>
+			</tr>
+			<tr>
+			  <td>Excavation (földtúrás)</td>
+			  <td>Ásó használatával</td>
+			  <td>Egyre nagyobb esély különböző kincsek találására</td>
+			  <td>Nagyon gyors ásás</td>
+			</tr>
+			<tr>
+			  <td>Herbalism (növénytermesztés)</td>
+			  <td>Növények ültetésével és leszüretelésével</td>
+			  <td>Automatikus ültetésre való esély növekedése, növényi ételek többet táplálnak, esély kincsek találására a növények szüretelésekor</td>
+			  <td>3x-os termés, kövek befüvesítése, föld myceliummá alakítása</td>
+			</tr>
+		  </tbody>
+		</table>            
+	</div>
+
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+		<h3 class="panel-title">Piac használata</h3>
+	  </div>
+	  <div class="panel-body">
+		<span class="lead">A piacon való kereskedéshez pént váltani a bankban lehet. 1 gyémánt $400-at, míg 1 arany $100-at ér.</span>
+	  </div>
+	  <div class="embed-responsive embed-responsive-16by9">
+		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GpCKaHsr59Y" allowfullscreen></iframe>
+	  </div>
+	</div>
+
+  </div>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+
