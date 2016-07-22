@@ -2,4 +2,4 @@ Kedves <%= @user.username %>!
 
 Köszönjük, hogy regisztráltál a Crafters Reborn honlapján! Kérjük erősítsd meg az email címed az alábbi linken:
 
-<%= confirm_email_url(@user.confirm_token, host: "crafters.no-ip.org:3000") %>
+<%= confirm_email_url(@user.confirm_token, host: "crafters.no-ip.org") %>

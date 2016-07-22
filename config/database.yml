@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: crafters_production
-  username: rails
-  password: <%= ENV['CRAFTERS_DATABASE_PASSWORD'] %>
