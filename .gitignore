@@ -18,3 +18,11 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore compiled assets
+/public/assets/*
+
+# Ignore Passenger config and PID files
+Passengerfile.json
+passenger.80.pid
+passenger.80.pid.lock
