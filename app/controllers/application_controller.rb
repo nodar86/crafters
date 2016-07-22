@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :load_user
+  before_action :load_user
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')

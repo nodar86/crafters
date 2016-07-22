@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: :show_user
   get 'confirm_email/:token', to: 'users#confirm_email', as: 'confirm_email'
   get 'confirm_email_resend/:id', to: 'users#confirm_email_resend', as: 'confirm_email_resend'
+  get 'users', to: 'users#index', as: :index_users
 
 # Donations
   get 'donations', to: 'donations#index', as: :donations
