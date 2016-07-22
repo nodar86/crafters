@@ -22,5 +22,6 @@ module Crafters
       :enable_starttls_auto => true
     }
     config.action_mailer.raise_delivery_errors = true
+    config.i18n.available_locales = [:hu, :en]
   end
 end

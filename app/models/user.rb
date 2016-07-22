@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_create :confirmation_token
   before_save :encrypt_password
+  has_many :donation
 
   attr_accessor :password
 
@@ -8,6 +9,7 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true
   }
+  validates_format_of :email, :with => /@/
   validates :username, {
     presence: true,
     uniqueness: true

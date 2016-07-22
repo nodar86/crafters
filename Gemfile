@@ -58,3 +58,6 @@ gem 'minecraft-query', '~> 1.0'
 
 # Figaro env-var manager
 gem 'figaro'
+
+# Localizaiton
+gem 'rails-i18n', '~> 5.0.0'

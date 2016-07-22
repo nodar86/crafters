@@ -101,12 +101,19 @@
  }
 
  #message {
-    position: relative;
-    top: 0;
-    margin: 0 auto;
-    width: 50%;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    z-index: 100;
  }
  
  #message-inner{
     margin-bottom: 0px;
+    position: relative;
+    left: -50%;
+ }
+
+ #message-text {
+    margin-left: 20px;
+    margin-right: 20px;
  }
