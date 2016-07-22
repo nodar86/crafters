@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # MinecraftQuery to retrieve data via RCON
 gem 'minecraft-query', '~> 1.0'
+
+# Figaro env-var manager
+gem 'figaro'

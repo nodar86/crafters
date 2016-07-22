@@ -12,7 +12,7 @@
     <%= link_to "Crafters Reborn", static_pages_index_path, :class=>"navbar-brand", :id=>"navbar-title" %>
   </div>
   <div class="collapse navbar-collapse" id="navbar">
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav">
       <li class="hidden">
         <a href="#page-top"></a>
       </li>
@@ -28,9 +28,29 @@
       <li class="page-scroll">
         <%= link_to "Támogatás" , static_pages_donate_path %>
       </li>
-      <li class="page-scroll">
-        <%= link_to "Dynmap" , static_pages_dynmap_path %>
-      </li>
+      <% if logged_in? %>
+        <li class="page-scroll">
+          <%= link_to "Dynmap" , static_pages_dynmap_path %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li class="page-scroll dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= @user.username %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Profil", show_user_path(session[:user]) %></li> 
+            <li><%= link_to "Kijelentkezés", sessions_destroy_path %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li class="page-scroll">
+          <%= link_to new_user_path do %><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Regisztráció<% end %>
+        </li>
+        <li class="page-scroll">
+          <%= link_to static_pages_login_path do %><span class="glyphicon glyphicon-log-in" style="margin-right: 5px"></span>Bejelentkezés<% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

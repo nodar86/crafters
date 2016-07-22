@@ -11,5 +11,16 @@ module Crafters
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.action_mailer.delivery_method = :smtp
+    # SMTP settings for gmail
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :user_name => "craftersmain@gmail.com",
+      :password => ENV["GMAIL_PASSWORD"],
+      :authentication => "plain",
+      :enable_starttls_auto => true
+    }
+    config.action_mailer.raise_delivery_errors = true
   end
 end
