@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_filter :login_required, :only => [:dynmap, :dynmap_inside]
+  before_action :login_required, :only => [:dynmap, :dynmap_inside]
 
   def index
     require 'minecraft-query'

@@ -19,12 +19,22 @@ Rails.application.routes.draw do
 # User management:
   get 'register', to: 'users#new', as: :new_user
   post 'users', to: 'users#create', as: :create_user
-
   get 'users/:id/edit', to: 'users#edit', as: :edit_user
   put 'users/:id', to: 'users#update', as: :update_user
-
   get 'users/:id', to: 'users#show', as: :show_user
-
   get 'confirm_email/:token', to: 'users#confirm_email', as: 'confirm_email'
   get 'confirm_email_resend/:id', to: 'users#confirm_email_resend', as: 'confirm_email_resend'
+
+# Donations
+  get 'donations', to: 'donations#index', as: :donations
+  get 'donations/new', to: 'donations#new', as: :new_donation
+  post 'donations', to: 'donations#create', as: :create_donation
+  get 'donations/:id', to: 'donations#show', as: :show_donation
+  get 'donations/:id/edit', to: 'donations#edit', as: :edit_donation
+  put 'donations/:id', to: 'donations#update', as: :update_donation
+  delete 'donations/:id', to: 'donations#destroy', as: :destroy_donation
+
+# Whitelist
+  get 'whitelist', to: 'users#whitelist_show', as: :whitelist
+  post 'whitelist', to: 'users#whitelist_apply', as: :whitelist_apply
 end

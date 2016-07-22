@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
     @current_user = User.authenticate(params[:username], params[:password])
     if @current_user
       session[:user] = @current_user.id
-      redirect_back(fallback_location: root_url)
+      flash[:success] = "Sikeres bejelentkezés"
+      redirect_to root_url
     else
       flash[:danger] = "Hibás felhasználónév vagy jelszó"
       redirect_back(fallback_location: root_url)

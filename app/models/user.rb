@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_create :confirmation_token
-  before_save :encrypt_password
+  before_save :encrypt_password, :check_whitelist
   has_many :donation
 
   attr_accessor :password
@@ -15,6 +15,7 @@ class User < ApplicationRecord
     uniqueness: true
   }
   validates :password, confirmation: true, if: :password_required?
+  validates :password, length: { in: 6..20 }, if: :password_required?
   
   def password_required?
     !password.blank? || encrypted_password.blank?
@@ -30,6 +31,20 @@ class User < ApplicationRecord
       self.salt = SecureRandom.base64(8)
     end
     self.encrypted_password = User.encrypt(password,salt)
+  end
+
+  def check_whitelist
+    wl_file = "/home/minecraft/spigot/whitelist.json"
+    if wl_file
+      wl_string = File.read(wl_file)
+      wl_hash = JSON.parse(wl_string)
+      whitelist = wl_hash.map { |entry| entry["name"] }
+      if whitelist.include? self.username
+        self.isonwhitelist = true
+      else
+        self.isonwhitelist = false
+      end
+    end
   end
 
   def authenticated?(pass)

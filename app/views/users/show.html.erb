@@ -1,5 +1,50 @@
-<%= @user.username %>
-<%= @user.email %>
-<%= @user.birthdate %>
-<br/>
-<%= @user.email_confirmed %>
+<% content_for :title, @user.username %>
+<% @user.errors.full_messages.each do |message| %>
+  <%= message.to_s %>
+<% end %>
+<div class="container">
+  <div class="row">
+    <h1><%= @user.username %> profilja</h1>
+	  <div class="container">
+      <%= form_for :user, url: {action: :update}, method: :put, html: {class: "form-horizontal"} do |f| %>
+        <div class="form-group has-feedback <% unless @user.errors.messages[:username].blank? %> has-error <% end %>">
+          <%= f.label "Felhasználónév", for: "user_username", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :username,  class: "form-control", disabled: true %>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @user.errors.messages[:email].blank? %> has-error <% end %>">
+          <%= f.label "Email" , for: "user_email", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :email,  class: "form-control" %>
+            <% unless @user.email_confirmed %>
+              <p class="help-block">Még nem igazoltad vissza az email címed! <%= link_to "Aktiváló email újraküldése", confirm_email_resend_path(@user) %></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @user.errors.messages[:birthdate].blank? %> has-error <% end %>">
+          <%= f.label "Születési dátum" , for: "user_birthdate", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <div class="form-group-row">
+              <div class="col-sm-2" style="padding-left: 0px">
+                <%= f.date_select :birthdate, {start_year: 1950, end_year: 2016, date_separator: "</div><div class=\"col-sm-2\">"},{class: "form-control"} %>         
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "Adatmódosítás", class: "btn btn-default" %>
+          </div>
+        </div>
+      <% end %>
+	  </div>
+  </div>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+
