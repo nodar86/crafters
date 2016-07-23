@@ -38,8 +38,8 @@ class User < ApplicationRecord
     if wl_file
       wl_string = File.read(wl_file)
       wl_hash = JSON.parse(wl_string)
-      whitelist = wl_hash.map { |entry| entry["name"] }
-      if whitelist.include? self.username
+      whitelist = wl_hash.map { |entry| entry["name"].downcase }
+      if whitelist.include? self.username.downcase
         self.isonwhitelist = true
       else
         self.isonwhitelist = false
