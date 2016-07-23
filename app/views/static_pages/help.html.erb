@@ -164,12 +164,38 @@
 	  <div class="panel-heading panel-heading-green">
 		<h3 class="panel-title">Piac használata</h3>
 	  </div>
-	  <div class="panel-body">
-		<span class="lead">A piacon való kereskedéshez pént váltani a bankban lehet. 1 gyémánt $400-at, míg 1 arany $100-at ér.</span>
+	  <div class="panel-body bigger-text">
+		<p><strong>A piacon való kereskedéshez pént váltani a bankban lehet. 1 gyémánt $400-at, míg 1 arany $100-at ér.</strong></p>
+    <p>A kereskedelemhez építs a piacon magadnak egy standot vagy tetszőleges szabad helyre, vagy vásárolj prémium helyet ($1000-$2000)! <br/>
+    Ezután a standon belül lerakhatsz táblákat, amikkel a kereskedelmet folytatod. A tábláknak így kell kinézniük:</p>
+    <ol>
+      <li>sor: "[Trade]"</li>
+      <li>sor: Amit te kérsz, formátum: <code>&lt;darabszám&gt; &lt;név/ID&gt;</code> vagy <code>$&lt;mennyiség&gt;</code><br/>
+      <small>A név/ID helyre írandó szöveget megkaphatod, ha a kezedben tartod az eladandó itemet és beírod a <code>/itemdb</code> parancsot.</small></li>
+      <li>sor: Amit te adsz, formátum: <code>&lt;darabszám&gt; &lt;név/ID&gt;:&lt;feltöltés&gt;</code> vagy <code>$&lt;mennyiség&gt;:&lt;feltöltés&gt;</code><br/>
+      <small>A "feltöltés" azt a mennyiséget jelöli, amennyi itemet vagy pénzt alapból bele akarsz tölteni a táblába. Ez legalább annyi kell legyen mint a darabszám/mennyiség és kell legyen ennyi nálad!</small></li>
+      <li>sor: Ha mindent helyesen csináltál itt megjelenik a neved és a tábla használható lesz.</li>
+    </ol>
+    <p><strong>Tábla használata lerakása után:</strong> Ha a tulajdonos jobb-klikkel a táblára akkor begyűjti a benne lévő (neki fizetett) pénzt vagy itemeket, ha az árult itemmel jobb-klikkel a táblára, akkor azt beletölti.<br/>
+    Ha más jobb-klikkel a táblára, akkor megvesz egy adagot abból amit a tábla árul</p>
+    <p><strong>Példa helyes táblák:</strong></p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag "http://i.imgur.com/EAhQH6m.png", alt: "trade_sign_01", class: "img-responsive img-rounded" %>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag "http://i.imgur.com/7cy7Zx6.png", alt: "trade_sign_02", class: "img-responsive img-rounded" %>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag "http://i.imgur.com/isjERr8.png", alt: "trade_sign_03", class: "img-responsive img-rounded" %>
+        </div>
+      </div>
+    </div>
 	  </div>
-	  <div class="embed-responsive embed-responsive-16by9">
+	  <!--<div class="embed-responsive embed-responsive-16by9">
 		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GpCKaHsr59Y" allowfullscreen></iframe>
-	  </div>
+	  </div>-->
 	</div>
 
   </div>

@@ -79,12 +79,12 @@
         <div class="col-md-4">
           <h2>Aktuális</h2>
           <p class="lead">Whitelist jelentkezés</p>
-          <p>A whitelist jelentkezést <a href="whitelist.php" class="green-link">megnyitottuk</a>, határozatlan ideig lehet jelentkezni. Bár nem kötelező indoklást megadni, javasoljuk hozzatok össze legalább 3 értelmes mondatot ;)</p>
-          <p>Akik jelentkeztek próbáljanak feljönni, mert elhagytuk az emaileket és nem tudtunk mindenkinek szólni aki felkerült</p>
+          <p>A whitelist jelentkezést <%= link_to "megnyitottuk", whitelist_path, class: "green-link" %>! 
+          <p>A jelentkezés előtt <%= link_to "regisztrálni", new_user_path, class: "green-link" %> kell a honlapon. A <%= link_to "dynmap", static_pages_dynmap_path, class: "green-link" %> megnézéséhez is szükséges a bejelentkezés.</p>
        </div>
         <div class="col-md-4">
           <h2>Hasznos Linkek</h2>
-          <p><a class="btn btn-default btn-block" href="https://www.youtube.com/watch?v=GpCKaHsr59Y" role="button"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Videó a piac használatáról</a></p>
+          <!--<p><a class="btn btn-default btn-block" href="https://www.youtube.com/watch?v=GpCKaHsr59Y" role="button"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Videó a piac használatáról</a></p>-->
           <p><a class="btn btn-default btn-block" href="https://minecraft.net/en/download/" role="button"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Eredeti minecraft</a></p>
           <p><a class="btn btn-default btn-block" href="http://teamshiginima.com/update/3100.php" role="button"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Tört minecraft</a></p>
           <p><a class="btn btn-default btn-block" href="http://java.com/en/" role="button"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Java</a></p>
