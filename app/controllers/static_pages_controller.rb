@@ -11,7 +11,6 @@ class StaticPagesController < ApplicationController
         @query = {:online => false}
       end
     end
-
   end
 
   def rules

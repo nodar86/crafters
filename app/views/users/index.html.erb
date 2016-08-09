@@ -1,3 +1,8 @@
 <% @users.each do |user| %>
-  <%= user.username %> whitelist: <%= user.isonwhitelist %>
+  <%= user.username %> whitelist: <%= user.isonwhitelist %><br/>
+  <% user.get_donations.each do |donation| %>
+    <%= donation.amount %>
+  <% end %>
+  <br/>
+  ----
 <% end %>
