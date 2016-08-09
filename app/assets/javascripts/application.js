@@ -14,8 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap-table
+//= require jquery.turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 $("#message").fadeTo(2000, 500).slideUp(500, function(){
         $("#message").alert('close');
+});
+
+$('#delete-confirm').on('show', function() {
+      var $submit = $(this).find('.btn-danger'),
+            href = $submit.attr('href');
+              $submit.attr('href', href.replace('pony', $(this).data('id')));
+});
+
+$('.delete-confirm').click(function(e) {
+      e.preventDefault();
+        $('#delete-confirm').data('id', $(this).data('id')).modal('show');
 });

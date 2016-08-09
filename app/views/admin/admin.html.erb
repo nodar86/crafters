@@ -1,0 +1,89 @@
+<%= content_for(:title, "Admin") %>
+<div class="container">
+  <div class="row">
+	  <h1>Admin</h1>
+	  <div class="container">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">Eventek</a>
+          </h4>
+          </div>
+          <div id="collapseEvents" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingEvents">
+            <div class="panel-body">
+              <div class="table-responsive">
+              <table class="table table-striped" data-toggle="table">
+                 <thead>
+                  <th data-sortable="true">Időpont</th>
+                  <th data-sortable="true">Név</th>
+                  <th data-sortable="true">Csoportos</th>
+                  <th data-sortable="true">Jelentkezett / Maximum</th>
+                  <th data-sortable="true">Csoportméret</th>
+                  <th><div class="button-column"><%= link_to "Új event", new_event_path, class: "btn btn-success" %></div></th>
+                </thead>
+                <tbody>
+                  <% @events.each do |event| %>
+                    <tr>
+                      <td><%= event.startDate.strftime "%Y. %m. %d. %H:%M" %></td>
+                      <td><%= event.name %></td>
+                      <td><%= if event.groupEvent then "igen" else "nem" end %></td>
+                      <td><%= event.users.length*event.playersInGroup %> / <%= event.maxPlayers %></td>
+                      <td><%= event.playersInGroup %></td>
+                      <td class="button-column">
+                        <div class="btn-group">
+                          <%= link_to "Szerkesztés", edit_event_path(event), class: "btn btn-default" %>
+                          <%= link_to(destroy_event_path(event), method: :delete, class: "btn btn-danger", data:{confirm: "Biztos törlöd?", ok: "Törlés", cancel: "Mégse"}) do %>
+                            <span class="glyphicon glyphicon-trash"></span> Törlés
+                          <% end %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table> 
+            </div>
+          </div>
+        </div>
+      <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">Felhasználók</a>
+        </h4>
+      </div>
+      <div id="collapseUsers" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingUsers">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped" data-toggle="table">
+               <thead>
+                <th data-sortable="true">Felhasználónév</th>
+                <th data-sortable="true">Email cím</th>
+                <th data-sortable="true">Születési dátum</th>
+                <th data-sortable="true">Email visszaigazolva?</th>
+                <th data-sortable="true">Whitelisten rajta?</th>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.birthdate.strftime "%Y. %m. %d." %></td>
+                    <td><%= if user.email_confirmed then "igen" else "nem" end %></td>
+                    <td><%= if user.isonwhitelist then "igen" else "nem" end %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+  	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+

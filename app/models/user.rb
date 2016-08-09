@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :confirmation_token
   before_save :encrypt_password, :check_whitelist
   has_many :donations
+  has_and_belongs_to_many :events
 
   attr_accessor :password
 

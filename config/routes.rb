@@ -38,4 +38,19 @@ Rails.application.routes.draw do
 # Whitelist
   get 'whitelist', to: 'users#whitelist_show', as: :whitelist
   post 'whitelist', to: 'users#whitelist_apply', as: :whitelist_apply
+
+# Events
+  get 'events', to: 'events#index', as: :events
+  get 'event/new', to: 'events#new', as: :new_event
+  post 'events', to: 'events#create', as: :create_event
+  get 'events/:id/edit', to: 'events#edit', as: :edit_event
+  put 'events/:id', to: 'events#update', as: :update_event
+  get 'event/:id', to: 'events#show', as: :show_event
+  delete 'event/:id', to: 'events#destroy', as: :destroy_event
+  post 'events/:id/apply', to: 'events#apply', as: :event_apply
+  post 'events/:id/resign', to: 'events#resign', as: :event_resign
+
+# Admin
+  get 'admin', to: 'admin#admin', as: :admin
+
 end

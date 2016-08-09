@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  groupEvent: false
+  maxPlayers: 1
+  playersInGroup: 1
+  startDate: 2016-08-09 16:36:34
+
+two:
+  name: MyString
+  groupEvent: false
+  maxPlayers: 1
+  playersInGroup: 1
+  startDate: 2016-08-09 16:36:34

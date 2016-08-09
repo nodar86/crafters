@@ -1,0 +1,50 @@
+<% content_for :title, "Új event" %>
+<div class="container">
+  <div class="row">
+    <h1>Új event</h1>
+	  <div class="container">
+      <%= form_for :event, url: {action: :create}, method: :post, html: {class: "form-horizontal"} do |f| %>
+        <div class="form-group has-feedback <% unless @event.errors.messages[:name].blank? %> has-error <% end %>">
+          <%= f.label "Név", for: "event_name", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :name,  class: "form-control" %>
+            <p class="help-block"><%= @event.errors.messages[:name][0] %></p>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @event.errors.messages[:startDate].blank? %> has-error <% end %>">
+          <%= f.label "Dátum" , for: "event_startDate", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.datetime_select :startDate,  class: "form-control" %>
+            <p class="help-block"><%= @event.errors.messages[:startDate][0] %></p>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @event.errors.messages[:maxPlayers].blank? %> has-error <% end %>">
+          <%= f.label "Maximális játékosszám" , for: "event_maxPlayers", class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :maxPlayers, class: "form-control" %>         
+            <p class="help-block"><%= @event.errors.messages[:maxPlayers][0] %></p>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @event.errors.messages[:playersInGroup].blank? %> has-error <% end %>">
+          <%= f.label "Egy csapat játékosai", for: "event_playersInGroup", class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :playersInGroup,  class: "form-control" %>
+            <p class="help-block"><%= @event.errors.messages[:playersInGroup][0] %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "Új event", class: "btn btn-default" %>
+          </div>
+        </div>
+      <% end %>
+	  </div>
+  </div>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+

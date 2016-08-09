@@ -1,0 +1,51 @@
+<%= content_for(:title, "Eventek") %>
+<div class="container">
+  <div class="row">
+	  <h1>Eventek</h1>
+  	<div class="container">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <th class=>Időpont</th>
+            <th>Event</th>
+            <th>Jelentkezettek / Max. játékosszám</th>
+            <th>Típus</th>
+            <th></th>
+          </thead>
+          <tbody>
+          <% @events.each do |event| %>
+            <% if event.startDate > Time.now - 1.day %>
+              <tr class="<%= "success" if event.users.include? @user %> <%= "danger" if event.startDate < Time.now %>">
+                <td><%= event.startDate.strftime "%Y. %m. %d. %H:%M" %></td>
+                <td><%= event.name %></td>
+                <td><%= event.users.length*event.playersInGroup %> / <%= event.maxPlayers %></td>
+                <td>
+                  <% if event.groupEvent %>
+                    <%= event.playersInGroup %> fős csapat
+                  <% else %>
+                    Egyéni
+                  <% end %>
+                </td>
+                <td>
+                  <% if event.users.include? @user %>
+                    <%= button_to "Lemondom",  event_resign_path(event), class: "btn btn-default", disabled: event.startDate < Time.now %> 
+                  <% else %>
+                    <%= button_to "Jelentkezem",  event_apply_path(event), class: "btn btn-default", disabled: (event.users.length*event.playersInGroup >= event.maxPlayers or event.startDate < Time.now) %> 
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+	  </div>
+</div>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+
