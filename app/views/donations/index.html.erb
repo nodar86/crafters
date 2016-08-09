@@ -1,0 +1,28 @@
+<%= content_for(:title, "Támogatás") %>
+<div class="container">
+  <div class="row">
+	  <h1>Támogatás</h1>
+  	<div class="container container-narrow">
+	    <p class="bigger-text">A szerver jelenleg nodar nappaliában fut egy kiszuperált laptopról. Azért nem kell félni, i5, 8Gb RAM tehát lag nem lesz, de nem túl professzionális ez a megoldás, és hosszútávon nem működőképes. Ahhoz, hogy a szerver a lehető legtovább működni tudjon és, hogy nektek a lehető legjobb élményt nyújtsa, már dolgozunk a szerverparkba költözősen. Ehhez viszont segítenetek kell! Ketten sajnos nem tudjuk egyedül megoldani.</p>
+	    <p class="bigger-text">Ha úgy érzed támogatni szeretnéd a működésünk és persze <span class="label label-warning">VIP</span> rangot szeretnél kapni, akkor keress minket a <span class="label label-default">craftersmain[at]gmail.com</span> címen.</p>
+  	  <p class="bigger-text">Jelenglegi támogatóink:
+        <% @donations.each do |donation| %>
+          <span class="label label-warning"><%= donation.user.username %></span>
+        <% end %>
+      </p>
+      <h3>Havi cél</h3>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="<%= @donation_sum %>" aria-valuemin="0" aria-valuemax="<%= @donation_goal %>" style="width:60%">
+          <p class="bigger-text"><%= @donation_sum %> Ft / <%= @donation_goal %> Ft</p>
+        </div>
+      </div>
+	  </div>
+  </div>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+

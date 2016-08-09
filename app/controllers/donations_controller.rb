@@ -1,8 +1,14 @@
 class DonationsController < ApplicationController
   before_action :set_donation, only: [:show, :edit, :update, :destroy]
+  before_action :login_required, :only => [:new]
 
   def index
     @donations = Donation.all
+    @donation_sum = 0
+    Donation.where('extract(month from updated_at) = ?', Date.today.month).each do |donation|
+      @donation_sum += donation.amount
+    end   
+    @donation_goal = 7000
   end
 
   def show

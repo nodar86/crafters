@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_create :confirmation_token
   before_save :encrypt_password, :check_whitelist
-  has_many :donation
+  has_many :donations
 
   attr_accessor :password
 
@@ -65,6 +65,10 @@ class User < ApplicationRecord
   def generate_new_token
     self.confirm_token = SecureRandom.urlsafe_base64.to_s 
     save!(:validate => false)
+  end
+
+  def get_donations
+    self.donations.order('updated_at desc')
   end
   
   private
