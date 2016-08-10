@@ -3,8 +3,8 @@
   <div class="row">
 	<h1>Whitelist</h1>
 	<div class="container container-narrow">
-    <% if @user %>
-      <% if @user.isonwhitelist %>
+    <% if @current_user %>
+      <% if @current_user.isonwhitelist %>
         <div class="panel panel-info">
           <div class="panel-heading">
             <span class="bigger-text">Már rajta vagy a whitelisten. Menj játszani! IP: <code>crafters.no-ip.org</code><br/>
@@ -12,7 +12,7 @@
           </div>
         </div>
       <% else %>
-        <% if @user.email_confirmed %>
+        <% if @current_user.email_confirmed %>
           <p class="bigger-text">Még nem vagy rajta a whitelisten, az alábbi gombbal jelentkezhetsz: <br/>
           <small>Első belépéskor nem fog felengedni. Próbáld újra 15-20 perc múlva, akkor már működni fog</small></p>
           <%= button_to "Jelentkezem",  whitelist_apply_path, class: "btn btn-default" %> 
@@ -23,8 +23,8 @@
             </div>
             <div class="panel-body">
               <ul style="margin-bottom: 0">
-                <li><%= link_to "Aktiváló email újraküldése", confirm_email_resend_path(@user) %></li>
-                <li><%= link_to "Email cím módosítása", show_user_path(@user) %></li>
+                <li><%= link_to "Aktiváló email újraküldése", confirm_email_resend_path(@current_user) %></li>
+                <li><%= link_to "Email cím módosítása", show_user_path(@current_user) %></li>
               </ul>
             </div>
           </div>

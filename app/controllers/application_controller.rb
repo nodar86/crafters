@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   protected
     def load_user
       if session[:user]
-        @user = User.find session[:user]
+        @current_user = User.find session[:user]
       end
     end
 end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :login_required, :only => [:index]
+  before_action :login_required, only: [:index, :edit, :update, :show]
+  before_action :correct_user_required, only: [:edit, :update, :show]
 
   def index
     @users = User.all
@@ -55,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     @user.attributes = params_user
     if @user.email_changed?
       @user.email_confirmed = false
@@ -73,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.new
+    @user = User.find params[:id]
   end
 
   def show
@@ -108,5 +110,10 @@ class UsersController < ApplicationController
   private
     def params_user
       params.require(:user).permit([:email, :username, :birthdate, :password, :password_confirmation])
+    end
+    
+    def correct_user_required
+      @user = User.find params[:id]
+      redirect_to(root_url) unless @user == @current_user
     end
 end

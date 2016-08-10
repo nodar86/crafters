@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :login_required, :only => [:index]
 
   def index
-    @events = Event.all
+    @events = Event.order(startDate: :desc)
   end
 
   def new

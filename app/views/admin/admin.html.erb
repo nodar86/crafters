@@ -32,9 +32,14 @@
                       <td><%= event.playersInGroup %></td>
                       <td class="button-column">
                         <div class="btn-group">
-                          <%= link_to "Szerkesztés", edit_event_path(event), class: "btn btn-default" %>
+                          <%= link_to show_event_path(event), class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-eye-open"></span> <!-- Megtekintés -->
+                          <% end %>
+                          <%= link_to edit_event_path(event), class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-pencil"></span> <!-- Szerkesztés -->
+                          <% end %>
                           <%= link_to(destroy_event_path(event), method: :delete, class: "btn btn-danger", data:{confirm: "Biztos törlöd?", ok: "Törlés", cancel: "Mégse"}) do %>
-                            <span class="glyphicon glyphicon-trash"></span> Törlés
+                            <span class="glyphicon glyphicon-trash"></span> <!-- Törlés -->
                           <% end %>
                         </div>
                       </td>
@@ -61,6 +66,7 @@
                 <th data-sortable="true">Születési dátum</th>
                 <th data-sortable="true">Email visszaigazolva?</th>
                 <th data-sortable="true">Whitelisten rajta?</th>
+                <th data-sortable="true">Reg. dátum</th>
               </thead>
               <tbody>
                 <% @users.each do |user| %>
@@ -70,6 +76,7 @@
                     <td><%= user.birthdate.strftime "%Y. %m. %d." %></td>
                     <td><%= if user.email_confirmed then "igen" else "nem" end %></td>
                     <td><%= if user.isonwhitelist then "igen" else "nem" end %></td>
+                    <td> <%= user.created_at.strftime "%Y. %m. %d." %></td>
                   </tr>
                 <% end %>
               </tbody>

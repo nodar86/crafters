@@ -15,7 +15,7 @@
           <tbody>
           <% @events.each do |event| %>
             <% if event.startDate > Time.now - 1.day %>
-              <tr class="<%= "success" if event.users.include? @user %> <%= "danger" if event.startDate < Time.now %>">
+              <tr class="<%= "success" if event.users.include? @user %> <%= "danger" if event.startDate < Time.now %> <%= "warning" if event.users.length*event.playersInGroup >= event.maxPlayers %>">
                 <td><%= event.startDate.strftime "%Y. %m. %d. %H:%M" %></td>
                 <td><%= event.name %></td>
                 <td><%= event.users.length*event.playersInGroup %> / <%= event.maxPlayers %></td>
