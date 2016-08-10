@@ -84,7 +84,52 @@
           </div>
         </div>
       </div>
+      <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNews" aria-expanded="false" aria-controls="collapseNews">Hírek</a>
+        </h4>
+      </div>
+      <div id="collapseNews" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNews">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-striped" data-toggle="table">
+               <thead>
+                <th data-sortable="true">Dátum</th>
+                <th data-sortable="true">Cím</th>
+                <th data-sortable="true">Szerző</th>
+                <th data-sortable="true">Fontos?</th>
+                <th><div class="button-column"><%= link_to "Új hír", new_news_path, class: "btn btn-success" %></div></th>
+              </thead>
+              <tbody>
+                <% @news.each do |news| %>
+                  <tr>
+                    <td> <%= news.created_at.strftime "%Y. %m. %d." %></td>
+                    <td><%= news.title %></td>
+                    <td> <%= news.user.username %></td>
+                    <td> <%= if news.important then "igen" else "nem" end %></td>
+                    <td class="button-column">
+                      <div class="btn-group">
+                        <%= link_to show_news_path(news), class: "btn btn-default" do %>
+                          <span class="glyphicon glyphicon-eye-open"></span> <!-- Megtekintés -->
+                        <% end %>
+                        <%= link_to edit_news_path(news), class: "btn btn-default" do %>
+                          <span class="glyphicon glyphicon-pencil"></span> <!-- Szerkesztés -->
+                        <% end %>
+                        <%= link_to(destroy_news_path(news), method: :delete, class: "btn btn-danger", data:{confirm: "Biztos törlöd?", ok: "Törlés", cancel: "Mégse"}) do %>
+                          <span class="glyphicon glyphicon-trash"></span> <!-- Törlés -->
+                        <% end %>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 
   <hr>

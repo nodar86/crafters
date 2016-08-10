@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
         @query = {:online => false}
       end
     end
+    @news = News.where(important: true).order(created_at: :desc).first
   end
 
   def rules

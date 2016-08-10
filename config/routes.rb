@@ -53,4 +53,13 @@ Rails.application.routes.draw do
 # Admin
   get 'admin', to: 'admin#admin', as: :admin
 
+# News
+  get 'news', to: 'news#index', as: :news
+  get 'news/new', to: 'news#new', as: :new_news
+  post 'news', to: 'news#create', as: :create_news
+  get 'news/:id/edit', to: 'news#edit', as: :edit_news
+  put 'news/:id', to: 'news#update', as: :update_news
+  get 'news/:id', to: 'news#show', as: :show_news
+  delete 'news/:id', to: 'news#destroy', as: :destroy_news
+
 end

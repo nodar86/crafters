@@ -4,5 +4,6 @@ class AdminController < ApplicationController
   def admin
     @events = Event.order(:startDate)
     @users = User.all
+    @news = News.all
   end
 end

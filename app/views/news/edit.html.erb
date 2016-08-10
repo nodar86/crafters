@@ -1,0 +1,54 @@
+<% content_for :title, "Hír szerkesztése" %>
+<% content_for :extra_head_tags, "" %>
+<div class="container">
+  <div class="row">
+    <h1>Hír szerkesztése</h1>
+	  <div class="container">
+      <%= form_for :news, url: {action: :update}, method: :put, html: {class: "form-horizontal"} do |f| %>
+        <div class="form-group has-feedback <% unless @news.errors.messages[:title].blank? %> has-error <% end %>">
+          <div class="col-sm-10">
+            <div class="input-group">
+              <%= f.text_field :title,  class: "form-control" %>
+              <span class="input-group-addon">
+                <%= f.check_box :important, "aria-label": "important" %> Fontos hír
+              </span>
+            </div>
+            <p class="help-block"><%= @news.errors.messages[:title][0] %></p>
+          </div>
+          <div class="col-sm-2">
+            <%= f.submit "Hír szerkesztése", class: "btn btn-primary" %>
+          </div>
+        </div>
+        <div class="form-group has-feedback <% unless @news.errors.messages[:body].blank? %> has-error <% end %>">
+          <div class="col-sm-12">
+            <%= f.text_area :body %>
+            <p class="help-block"><%= @news.errors.messages[:body][0] %></p>
+          </div>
+        </div>
+        <%= f.hidden_field :user_id, value: @news.user.id %>
+      <% end %>
+	  </div>
+  </div>
+
+  <script>
+    $(function() {
+      $('#news_body').froalaEditor({
+        height:500  
+      })
+    });
+    document.addEventListener("turbolinks:load", function() {
+      $(function() {
+        $('#news_body').froalaEditor({
+          height: 500
+        })
+      });
+    })
+  </script>
+
+  <hr>
+
+  <footer>
+	<p>&copy; 2016 Crafters</p>
+  </footer>
+</div> <!-- /container -->
+

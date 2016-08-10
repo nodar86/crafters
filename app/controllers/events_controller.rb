@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :login_required, :only => [:index]
+  before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @events = Event.order(startDate: :desc)
