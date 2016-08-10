@@ -15,7 +15,7 @@
           <tbody>
           <% @events.each do |event| %>
             <% if event.startDate > Time.now - 1.day %>
-              <tr class="<%= "success" if event.users.include? @user %> <%= "danger" if event.startDate < Time.now %> <%= "warning" if event.users.length*event.playersInGroup >= event.maxPlayers %>">
+              <tr class="<%= "success" if event.users.include? @current_user %> <%= "danger" if event.startDate < Time.now %> <%= "warning" if event.users.length*event.playersInGroup >= event.maxPlayers %>">
                 <td><%= event.startDate.strftime "%Y. %m. %d. %H:%M" %></td>
                 <td><%= event.name %></td>
                 <td><%= event.users.length*event.playersInGroup %> / <%= event.maxPlayers %></td>
@@ -27,7 +27,7 @@
                   <% end %>
                 </td>
                 <td>
-                  <% if event.users.include? @user %>
+                  <% if event.users.include? @current_user %>
                     <%= button_to "Lemondom",  event_resign_path(event), class: "btn btn-default", disabled: event.startDate < Time.now %> 
                   <% else %>
                     <%= button_to "Jelentkezem",  event_apply_path(event), class: "btn btn-default", disabled: (event.users.length*event.playersInGroup >= event.maxPlayers or event.startDate < Time.now) %> 

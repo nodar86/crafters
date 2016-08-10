@@ -41,13 +41,13 @@ class EventsController < ApplicationController
 
   def apply
     @event = Event.find_by_id params[:id]
-    @event.users << @user
+    @event.users << @current_user
     redirect_back(fallback_location: root_url)
   end
 
   def resign
     @event = Event.find_by_id params[:id]
-    @event.users.delete @user
+    @event.users.delete @current_user
     redirect_back(fallback_location: root_url)
   end
 
