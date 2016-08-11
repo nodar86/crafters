@@ -60,6 +60,7 @@ class UsersController < ApplicationController
     @user.attributes = params_user
     if @user.email_changed?
       @user.email_confirmed = false
+      @user.confirm_token = SecureRandom.urlsafe_base64.to_s
       UserMailer.registration_confirmation(@user).deliver
     end
     if @user.save
