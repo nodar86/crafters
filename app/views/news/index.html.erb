@@ -4,9 +4,9 @@
 	  <h1>Hírek</h1>
   	<div class="container">
       <% @news.each do |news| %>
-        <div class="panel panel-primary panel-primary-green">
-          <div class="panel-heading panel-heading-green">
-            <h3 class="panel-title"><%= news.title %><span class="pull-right"><%= news.created_at.strftime "%Y. %m. %d." %></span></h3>
+        <div class="panel panel-primary <%= "panel-primary-green" unless news.stickied %>">
+          <div class="panel-heading <%= "panel-heading-green" unless news.stickied %>">
+            <h3 class="panel-title"><%= news.title %><span class="pull-right"><%= "<span class=\"glyphicon glyphicon-pushpin\"></span>".html_safe if news.stickied %> <%= news.created_at.strftime "%Y. %m. %d." %></span></h3>
           </div>
           <div class="panel-body">          
             <div class="fr-view">

@@ -98,7 +98,6 @@ class UsersController < ApplicationController
   def confirm_email_resend
     @user = User.find_by_id(params[:id])
     if @user
-      @user.generate_new_token
       UserMailer.registration_confirmation(@user).deliver
       flash[:success] = "Email újraküldve"
       redirect_back(fallback_location: root_url)

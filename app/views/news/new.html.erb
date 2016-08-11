@@ -10,7 +10,10 @@
             <div class="input-group">
               <%= f.text_field :title,  class: "form-control" %>
               <span class="input-group-addon">
-                <%= f.check_box :important, "aria-label": "important" %> Fontos hír
+                <%= f.check_box :important, "aria-label": "important" %> Fontos
+              </span>
+              <span class="input-group-addon">
+                <%= f.check_box :stickied, "aria-label": "stickied" %> Rögzített
               </span>
             </div>
             <p class="help-block"><%= @news.errors.messages[:title][0] %></p>

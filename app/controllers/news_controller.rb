@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @news = News.order(created_at: :desc)
+    @news = News.order(stickied: :desc).order(created_at: :desc)
   end
 
   def new
@@ -46,6 +46,6 @@ class NewsController < ApplicationController
     end
     
     def news_params
-      params.require(:news).permit(:title, :body, :user_id, :important)
+      params.require(:news).permit(:title, :body, :user_id, :important, :stickied)
     end
 end
