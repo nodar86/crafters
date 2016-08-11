@@ -60,21 +60,20 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Szerver</h2>
-          <p class="lead">Állapot:              
-            <% if @query[:online] %>
-              <span class="label label-success">Online</span>
-            <% else %>
-              <span class="label label-danger">Offline</span>
-            <% end %>
-          </p>
-          <% if @query[:online] %>
-          <p>Online játékosok: 
-            <%= @query[:numplayers] %>
-          </p>
-          <% end %>
-          <p>
-            IP: <span class="label label-default">mc.craftershun.hu</span>
-          </p>
+          <ul class="list-group">
+            <li class="list-group-item active">IP: <span class="pull-right">mc.craftershun.hu</span></li> 
+            <li class="list-group-item <%= if @query[:online] then "list-group-item-success" else "list-group-item-danger" end %>">
+              ÁLLAPOT: 
+              <% if @query[:online] %>
+                <span class="pull-right">ONLINE</span>
+              <% else %>
+                <span class="pull-right">OFFLINE</span>
+              <% end %>
+            </li>
+            <li class="list-group-item">
+              ONLINE JÁTÉKOSOK: <span class="pull-right"><%= if @query[:online] then @query[:numplayers] else "0" end %></span>
+            </li>
+          </ul>
         </div>
         <div class="col-md-4">
           <h2>Aktuális</h2>
