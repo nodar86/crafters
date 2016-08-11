@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'help', to: 'static_pages#help', as: :static_pages_help
   get 'donate', to: 'static_pages#donate', as: :static_pages_donate
   get 'dynmap', to: 'static_pages#dynmap', as: :static_pages_dynmap
-  get 'dynmap_inside', to: 'static_pages#dynmap_inside', as: :static_pages_dynmap_inside
   get 'privacy_policy', to: 'static_pages#privacy_policy', as: :static_pages_privacy_policy
   get 'login', to: 'static_pages#login', as: :static_pages_login
   
