@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
     if @current_user
       session[:user] = @current_user.id
       flash[:success] = "Sikeres bejelentkezés"
-      redirect_to root_url
+      if params[:from]
+        redirect_to params[:from]
+      else
+        redirect_to root_url
+      end
     else
       flash[:danger] = "Hibás felhasználónév vagy jelszó"
       redirect_back(fallback_location: root_url)

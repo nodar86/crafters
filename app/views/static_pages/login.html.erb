@@ -17,6 +17,7 @@
             <p class="help-block">Ha nem enged belépni gyere vissza ide és frissíts a Ctrl+F5 kombinációval.</p>
           </div>
         </div>
+        <%= hidden_field_tag 'from', params[:from] %>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <%= submit_tag "Bejelentkezés", class:"btn btn-default" %>

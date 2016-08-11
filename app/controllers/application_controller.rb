@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    redirect_to(static_pages_index_path) unless session[:user]
+    unless session[:user]
+      flash[:danger] = "A kívánt oldal megtekintéséhez bejelentkezés szükséges!"
+      redirect_to static_pages_login_path(from: request.path)
+    end
   end
 
   def admin_required
