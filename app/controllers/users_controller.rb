@@ -10,18 +10,18 @@ class UsersController < ApplicationController
   end
 
   def whitelist_apply
-    if @user
-      unless @user.isonwhitelist
+    if @current_user
+      unless @current_user.isonwhitelist
         wl_file = "/home/minecraft/spigot/whitelist.json"
         if wl_file
           wl_hash = JSON.parse(File.read(wl_file))
-          wl_hash << { name: @user.username, uuid: "" }
+          wl_hash << { name: @current_user.username, uuid: "" }
           file = File.open(wl_file, "w")
           file.write(JSON.pretty_generate(wl_hash))
           file.close
-          @user.isonwhitelist = true
-          @user.save
-          flash[:success] = "Sikeres jelentkezés, próbálj belépni a crafters.no-ip.org címen!"
+          @current_user.isonwhitelist = true
+          @current_user.save
+          flash[:success] = "Sikeres jelentkezés, próbálj belépni az mc.craftershun.hu címen!"
         else
           flash[:danger] = "Hiba történt, nem olvasható a whitelist file, kérlek jelezd egy adminnak!"
         end
