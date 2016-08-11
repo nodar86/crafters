@@ -85,7 +85,7 @@
                 <span style="position:absolute; width:100%; height:100%; top:0; left: 0; z-index: 1;"></span>
               <% end %>
               <div class="fr-view">
-                <%= truncate_html(@news.body, length: 400, omission: "... (kattints a folytatáshoz)").html_safe %>
+                <%= truncate_html(@news.body, length: 350, omission: "... (kattints a folytatáshoz)").html_safe %>
               </div>
             </div>
           <% end %>
