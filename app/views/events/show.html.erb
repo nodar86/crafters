@@ -33,6 +33,11 @@
               <li class="list-group-item <%= "list-group-item-danger" unless user.isonwhitelist %>"><%= user.username %></li>
             <% end %>
           </ul>
+          <p>
+            <% @event.users.each do |user| %>
+              <%= user.email %>, 
+            <% end %>
+          </p>
         </div>
       </div>
 	  </div>
