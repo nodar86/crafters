@@ -20,7 +20,7 @@ class User < ApplicationRecord
   
   def self.check_playing
     require 'minecraft-query'
-    @query = Query::fullQuery('localhost', 25565)
+    @query = McQuery::fullQuery('localhost', 25565)
     if @query.is_a?(Hash)
       @query[:players].each do |player|
         u = User.find_by_username player
