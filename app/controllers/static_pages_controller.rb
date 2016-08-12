@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def index
     require 'minecraft-query'
     begin
-      @query = Query::simpleQuery('localhost', 25565)
+      @query = McQuery::simpleQuery('localhost', 25565)
       if @query.is_a?(Hash)
         @query[:online] = true
       else
