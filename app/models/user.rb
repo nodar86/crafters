@@ -24,8 +24,10 @@ class User < ApplicationRecord
     if @query.is_a?(Hash)
       @query[:players].each do |player|
         u = User.find_by_username player
-        u.played_at = Time.now
-        u.save!
+        if u
+          u.played_at = Time.now
+          u.save!
+        end
       end
     end
   end
