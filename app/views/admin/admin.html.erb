@@ -64,9 +64,11 @@
                 <th data-sortable="true">Felhasználónév</th>
                 <th data-sortable="true">Email cím</th>
                 <th data-sortable="true">Születési dátum</th>
-                <th data-sortable="true">Email visszaigazolva?</th>
+                <th data-sortable="true">Email jó?</th>
                 <th data-sortable="true">Whitelisten rajta?</th>
                 <th data-sortable="true">Reg. dátum</th>
+                <th data-sortable="true">Legutóbb weben</th>
+                <th data-sortable="true">Legutóbb játékban</th>
               </thead>
               <tbody>
                 <% @users.each do |user| %>
@@ -76,7 +78,9 @@
                     <td><%= user.birthdate.strftime "%Y. %m. %d." %></td>
                     <td><%= if user.email_confirmed then "igen" else "nem" end %></td>
                     <td><%= if user.isonwhitelist then "igen" else "nem" end %></td>
-                    <td> <%= user.created_at.strftime "%Y. %m. %d." %></td>
+                    <td> <%= user.created_at.strftime "%m. %d. %H:%M" %></td>
+                    <td> <%= if user.online_at then user.online_at.strftime "%m. %d. %H:%M" else "soha" end %></td>
+                    <td> <%= if user.played_at then user.played_at.strftime "%m. %d. %H:%M" else "soha" end %></td>
                   </tr>
                 <% end %>
               </tbody>

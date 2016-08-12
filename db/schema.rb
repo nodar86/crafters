@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811145611) do
+ActiveRecord::Schema.define(version: 20160812101644) do
 
   create_table "donations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "amount"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160811145611) do
     t.string   "confirm_token"
     t.boolean  "isadmin",            default: false
     t.boolean  "isonwhitelist",      default: false
+    t.datetime "online_at"
+    t.datetime "played_at"
   end
 
   add_foreign_key "donations", "users"

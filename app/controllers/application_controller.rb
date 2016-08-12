@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
     def load_user
       if session[:user]
         @current_user = User.find session[:user]
+        @current_user.online_at = Time.now
+        @current_user.save!
       end
     end
 end

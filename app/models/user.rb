@@ -18,6 +18,18 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: :password_required?
   validates :password, length: { in: 6..20 }, if: :password_required?
   
+  def check_playing
+    require 'minecraft-query'
+    @query = Query::fullQuery('localhost', 25565)
+    if @query.is_a?(Hash)
+      @query[:players].each do |player|
+        u = User.find_by_username player
+        u.played_at = Time.now
+        u.save!
+      end
+    end
+  end
+  
   def password_required?
     !password.blank? || encrypted_password.blank?
   end

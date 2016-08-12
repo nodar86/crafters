@@ -3,7 +3,7 @@ class AdminController < ApplicationController
 
   def admin
     @events = Event.order(:startDate)
-    @users = User.all
-    @news = News.all
+    @users = User.order(:username)
+    @news = News.order(:created_at)
   end
 end

@@ -74,3 +74,4 @@ gem 'rails-i18n', '~> 5.0.0'
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
 gem "truncate_html"
+gem 'whenever', :require => false
