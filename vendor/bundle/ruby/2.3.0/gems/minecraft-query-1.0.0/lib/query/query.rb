@@ -1,4 +1,4 @@
-class Query
+class McQuery
     def self.init
         @sock = UDPSocket.new
         @sock.connect(@addr,@port)

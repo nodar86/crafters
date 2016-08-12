@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def whitelist_show
   end
+  
 
   def whitelist_apply
     if @current_user
