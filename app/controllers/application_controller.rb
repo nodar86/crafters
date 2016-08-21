@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
-  def login_required
+  def login_required(custom_from = nil)
     unless session[:user]
       flash[:danger] = "A kívánt oldal megtekintéséhez bejelentkezés szükséges!"
-      redirect_to static_pages_login_path(from: request.path)
+      redirect_to static_pages_login_path(from: custom_from || request.fullpath)
     end
   end
 

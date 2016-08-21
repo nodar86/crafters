@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :login_required, :only => [:index]
+  before_action only: [:apply, :resign] do
+    login_required(events_path)
+  end
   before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
 
   def index
@@ -42,8 +44,13 @@ class EventsController < ApplicationController
 
   def apply
     @event = Event.find_by_id params[:id]
-    @event.users << @current_user
-    redirect_back(fallback_location: root_url)
+    if @event.maxPlayers > @event.users.length*@event.playersInGroup
+      @event.users << @current_user
+      redirect_back(fallback_location: root_url)
+    else
+      flash[:danger] = "Az event már tele van!"
+      redirect_to(root_url)
+    end
   end
 
   def resign

@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    #flash[:success] = "Sikeres kijelentkezés"
+    flash[:success] = "Sikeres kijelentkezés"
     redirect_to static_pages_index_path
     @current_user = nil
   end
