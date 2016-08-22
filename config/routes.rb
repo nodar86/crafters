@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
 # User management:
   get 'regisztracio', to: 'users#new', as: :new_user
-  post 'felhasznalok', to: 'felhasznalok#create', as: :create_user
+  post 'felhasznalok', to: 'users#create', as: :create_user
   get 'felhasznalok/:id/edit', to: 'users#edit', as: :edit_user
   put 'felhasznalok/:id', to: 'users#update', as: :update_user
   get 'felhasznalok/:id', to: 'users#show', as: :show_user
